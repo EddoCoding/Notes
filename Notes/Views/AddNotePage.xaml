@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Notes.Views.AddNotePage"
+             Title="AddNotePage">
+    
+    <StackLayout>
+
+        <Entry Text="{Binding NoteVM.Title}" Margin="15,5,15,0" FontSize="22" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" 
+               PlaceholderColor="DarkGray" Placeholder="Title note" FontAttributes="Italic" TextColor="Gray"/>
+
+        <Editor Text="{Binding NoteVM.Content}" Margin="10,0,10,-5" VerticalOptions="FillAndExpand" FontSize="20" TextColor="Gray"/>
+
+        <Button Margin="10,0,10,5" Text="Add a note" Command="{Binding AddNoteCommand}" CommandParameter="{Binding NoteVM}">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="TextColor" Value="DarkCyan"/>
+                    <Setter Property="FontSize" Value="18"/>
+                </Style>
+            </Button.Style>
+        </Button>
+        
+    </StackLayout>
+    
+</ContentPage>

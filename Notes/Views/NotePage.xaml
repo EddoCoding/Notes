@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Notes.Views.NotePage"
+             Title="NotePage">
+
+    <StackLayout>
+
+        <Entry Text="{Binding NoteVM.Title}" Margin="15,5,15,0" FontSize="22" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" 
+               TextColor="Gray" FontAttributes="Italic"/>
+
+        <Editor Text="{Binding NoteVM.Content}" Margin="10,0,10,-5" VerticalOptions="FillAndExpand" FontSize="20"/>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            
+            <Button Text="Update" Command="{Binding UpdateNoteCommand}" CommandParameter="{Binding NoteVM}" HorizontalOptions="FillAndExpand" Margin="5,0">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="TextColor" Value="DarkCyan"/>
+                        <Setter Property="FontSize" Value="18"/>
+                        <Setter Property="FontAttributes" Value="Italic"/>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <Line Y1="0" Y2="30" Stroke="LightGray" VerticalOptions="Center"/>
+
+            <Button Text="Delete" Command="{Binding DeleteNoteCommand}" CommandParameter="{Binding NoteVM}" HorizontalOptions="FillAndExpand" Margin="5,0">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="TextColor" Value="OrangeRed"/>
+                        <Setter Property="FontSize" Value="18"/>
+                        <Setter Property="FontSize" Value="18"/>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+        </StackLayout>
+
+    </StackLayout>
+
+</ContentPage>
