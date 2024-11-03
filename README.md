@@ -1,6 +1,6 @@
 ## Топ заметки
 
-### MVVM, ReactiveUI, EntityFramework
+### C# | MAUI | MVVM | ReactiveUI | EF | SQLite | 
 
 #### Главная страница.
 <img src="https://github.com/EddoCoding/Notes/blob/master/MainView.jpg" Height="500" Width="250">
