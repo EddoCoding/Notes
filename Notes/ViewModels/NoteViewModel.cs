@@ -13,11 +13,13 @@ namespace Notes.ViewModels
         public ReactiveCommand<NoteVM, Unit> DeleteNoteCommand { get; set; }
 
         INotesRepository _notesRepository;
-        ObservableCollection<NoteVM> _notes;
-        public NoteViewModel(INotesRepository notesRepository, ObservableCollection<NoteVM> notes, NoteVM noteVM)
+        ObservableCollection<NoteVM> notes;
+        List<NoteVM> _notes;
+        public NoteViewModel(INotesRepository notesRepository, ObservableCollection<NoteVM> Notes, List<NoteVM> notes, NoteVM noteVM)
         {
             _notesRepository = notesRepository;
-            _notes = notes;
+            this.notes = Notes;
+            this._notes = notes;
             NoteVM = noteVM;
 
             UpdateNoteCommand = ReactiveCommand.Create<NoteVM>(UpdateNote);
@@ -26,13 +28,13 @@ namespace Notes.ViewModels
 
         async void UpdateNote(NoteVM noteVM)
         {
-            _notesRepository.UpdateNote(noteVM);
+            await _notesRepository.UpdateNote(noteVM);
             await Application.Current.MainPage.Navigation.PopModalAsync();
         }
-
         async void DeleteNote(NoteVM noteVM)
         {
             await _notesRepository.DeleteNote(noteVM.Id);
+            notes.Remove(noteVM);
             _notes.Remove(noteVM);
             await Application.Current.MainPage.Navigation.PopModalAsync();
         }

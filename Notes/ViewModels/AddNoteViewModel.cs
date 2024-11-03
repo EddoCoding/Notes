@@ -13,11 +13,13 @@ namespace Notes.ViewModels
         public ReactiveCommand<NoteVM, Unit> AddNoteCommand { get; set; }
 
         INotesRepository _notesRepository;
-        ObservableCollection<NoteVM> _notes;
-        public AddNoteViewModel(INotesRepository notesRepository, ObservableCollection<NoteVM> notes)
+        ObservableCollection<NoteVM> notes;
+        List<NoteVM> _notes;
+        public AddNoteViewModel(INotesRepository notesRepository, ObservableCollection<NoteVM> Notes, List<NoteVM> notes)
         {
             _notesRepository = notesRepository;
-            _notes = notes;
+            this.notes = Notes;
+            this._notes = notes;
 
             AddNoteCommand = ReactiveCommand.Create<NoteVM>(AddNote);
         }
@@ -33,6 +35,7 @@ namespace Notes.ViewModels
                 Content = noteVM.Content
             };
             await _notesRepository.CreateNote(note);
+            notes.Add(noteVM);
             _notes.Add(noteVM);
 
             await Application.Current.MainPage.Navigation.PopModalAsync();

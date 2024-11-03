@@ -6,6 +6,13 @@
 
     <StackLayout>
 
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,0,10,10">
+            <Entry Text="{Binding TextSearch, UpdateSourceEventName=PropertyChanged}" Placeholder="Search"
+                   HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontSize="18" FontAttributes="Italic"/>
+            <!--<Button Text="Search" Margin="5,0,10,0" TextColor="Gray" BorderColor="Gray" BorderWidth="1" BackgroundColor="Transparent" HeightRequest="35"
+                    Padding="7,0"/>-->
+        </StackLayout>
+
         <CollectionView ItemsSource="{Binding Notes}" SelectedItem="{Binding SelectedNote}" SelectionMode="Single" Margin="10,0" 
                         VerticalOptions="FillAndExpand">
             <CollectionView.ItemTemplate>
